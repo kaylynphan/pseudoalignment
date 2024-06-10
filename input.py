@@ -14,6 +14,8 @@ def parse_reads(file_path):
         header = lines[0]
         sequence = ''.join(lines[1:])
 
+        # print(f'header: {header}')
+
         # Use regular expressions to parse the header
         match = re.match(r'(\S+)/(\S+);mate1:(\d+)-(\d+);mate2:(\d+)-(\d+)', header)
         if match:
@@ -22,7 +24,7 @@ def parse_reads(file_path):
             mate1_start = match.group(3)
             mate1_end = match.group(4)
             mate2_start = match.group(5)
-            mate2_end = match.group(5)
+            mate2_end = match.group(6)
 
             parsed_data.append({
                 'read_id': read_id,
